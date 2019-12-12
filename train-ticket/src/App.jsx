@@ -1,32 +1,37 @@
-import React, { Component } from "react";
-import "./App.css";
+import React, { Component, useState } from "react";
 
-class Foo extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.name === this.props.name) {
-      return false;
-    }
-    return true;
-  }
-  render() {
-    console.log(1);
-    return <div></div>;
-  }
-}
-class App extends Component {
+class App2 extends Component {
   state = {
     count: 0
   };
   render() {
+    const { count } = this.state;
     return (
       <div>
-        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-          add
-        </button>
-        <Foo name="Mike" />
+        <button
+          type="button"
+          onClick={() => {
+            this.setState({ count: count + 1 });
+          }}
+        ></button>
       </div>
     );
   }
+}
+function App() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        {count}
+      </button>
+    </div>
+  );
 }
 
 export default App;
