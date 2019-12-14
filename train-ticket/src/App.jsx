@@ -1,23 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, createContext } from "react";
 
-class App2 extends Component {
-  state = {
-    count: 0
-  };
-  render() {
-    const { count } = this.state;
-    return (
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            this.setState({ count: count + 1 });
-          }}
-        ></button>
-      </div>
-    );
-  }
-}
+const CountContext = createContext();
+
 function App() {
   const [count, setCount] = useState(0);
   return (
@@ -30,6 +14,7 @@ function App() {
       >
         {count}
       </button>
+      <CountContext.Provider value={count}></CountContext.Provider>
     </div>
   );
 }
