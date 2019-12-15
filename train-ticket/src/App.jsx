@@ -1,17 +1,9 @@
-import React, { Component, useState, createContext } from "react";
+import React, { Component, PureComponent, useState } from "react";
 
-const CountContext = createContext();
-
-class Foo extends Component {
-  state = {};
+class Counter extends PureComponent {
   render() {
-    return (
-      <CountContext.Consumer>
-        {count => {
-          count;
-        }}
-      </CountContext.Consumer>
-    );
+    const { props } = this;
+    return <h1>{props.count}</h1>;
   }
 }
 
@@ -27,9 +19,6 @@ function App() {
       >
         {count}
       </button>
-      <CountContext.Provider value={count}>
-        <Foo />
-      </CountContext.Provider>
     </div>
   );
 }
