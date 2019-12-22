@@ -34,7 +34,7 @@ function Control(props) {
 
   return (
     <div className="control">
-      <h1>Todos</h1>
+      <h1>Todos list</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
