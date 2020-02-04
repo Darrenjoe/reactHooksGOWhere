@@ -1,7 +1,11 @@
-import { connect } from "react-redux";
-import "./App.css";
+import React from 'react';
+import { connect } from 'react-redux';
 
-function App(props) {}
+import './App.css';
+
+function App(props) {
+  return <span>App</span>
+}
 
 export default connect(
   function mapStateToProps(state) {},
