@@ -109,3 +109,23 @@ export function setDepartDate(departDate) {
     payload: departDate
   };
 }
+
+export function fetchCityData() {
+  return (dispatch, getState) => {
+    const { isLoadingCityData } = getState();
+    if (isLoadingCityData) {
+      return;
+    }
+    dispatch(setIsLoadingCityData(true));
+
+    fetch("./rest/cities?_" + Date.now())
+      .then(res => res.json())
+      .then(cityData => {
+        dispatch(setCityData(cityData));
+        dispatch(setIsLoadingCityData(false));
+      })
+      .catch(() => {
+        dispatch(setIsLoadingCityData(false));
+      });
+  };
+}

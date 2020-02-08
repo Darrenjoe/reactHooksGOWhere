@@ -10,7 +10,12 @@ import Journey from "./Journey.jsx";
 import Submit from "./Submit.jsx";
 import CitySelector from "../common/CitySelector.jsx";
 
-import { exchangeFromTo, showCitySelector, hideCitySelector } from "./actions";
+import {
+  exchangeFromTo,
+  showCitySelector,
+  hideCitySelector,
+  fetchCityData
+} from "./actions";
 
 function App(props) {
   const {
@@ -40,7 +45,8 @@ function App(props) {
   const citySelectorCbs = useMemo(() => {
     return bindActionCreators(
       {
-        onBack: hideCitySelector
+        onBack: hideCitySelector,
+        fetchCityData
       },
       dispatch
     );
