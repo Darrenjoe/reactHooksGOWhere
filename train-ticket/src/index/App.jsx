@@ -9,6 +9,7 @@ import HighSpeed from "./HighSpeed.jsx";
 import Journey from "./Journey.jsx";
 import Submit from "./Submit.jsx";
 import CitySelector from "../common/CitySelector.jsx";
+import DateSelector from "../common/DateSelector.jsx";
 
 import {
   exchangeFromTo,
@@ -16,7 +17,8 @@ import {
   hideCitySelector,
   fetchCityData,
   setSelectedCity,
-  showDateSelector
+  showDateSelector,
+  hideDateSelector
 } from "./actions";
 
 function App(props) {
@@ -24,6 +26,7 @@ function App(props) {
     from,
     to,
     isCitySelectorVisible,
+    isDateSelectorVisible,
     cityData,
     isLoadingCityData,
     dispatch,
@@ -67,6 +70,16 @@ function App(props) {
     // eslint-disable-next-line
   }, []);
 
+  const dateSelectorCbs = useMemo(() => {
+    return bindActionCreators(
+      {
+        onBack: hideDateSelector
+      },
+      dispatch
+    );
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div>
       <div className="header-wrapper">
@@ -84,6 +97,7 @@ function App(props) {
         isLoading={isLoadingCityData}
         {...citySelectorCbs}
       />
+      <DateSelector show={isDateSelectorVisible} {...dateSelectorCbs} />
     </div>
   );
 }
