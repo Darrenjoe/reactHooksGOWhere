@@ -6,6 +6,17 @@ import Header from "./Header.jsx";
 
 import "./DateSelector.css";
 
+function Week(props) {
+  const { days, onSelect } = props;
+
+  return <div></div>;
+}
+
+Week.propTypes = {
+  days: PropTypes.array.isRequired,
+  onSelect: PropTypes.func.isRequired
+};
+
 function Month(props) {
   const { startingTimeInMonth, onSelect } = props;
 
@@ -57,6 +68,9 @@ function Month(props) {
           <th className="weekend">周六</th>
           <th className="weekend">周日</th>
         </tr>
+        {weeks.map((week, idx) => {
+          return <Week key={idx} days={week} onSelect={onSelect} />;
+        })}
       </tbody>
     </table>
   );
