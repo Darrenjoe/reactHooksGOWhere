@@ -2,14 +2,54 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
+import { h0 } from "../common/fp";
 import Header from "./Header.jsx";
 
 import "./DateSelector.css";
 
+function Day(props) {
+  const { day, onSelect } = props;
+
+  if (!day) {
+    return <td className="null"></td>;
+  }
+
+  const classes = [];
+
+  const now = h0();
+
+  if (day < now) {
+    classes.push("disabled");
+  }
+
+  if ([6, 0].includes(new Date(day).getDay())) {
+    classes.push("weekend");
+  }
+
+  const dateString = now === day ? "今天" : new Date(day).getDate();
+
+  return (
+    <td className={classnames(classes)} onClick={() => onSelect(day)}>
+      {dateString}
+    </td>
+  );
+}
+
+Day.propTypes = {
+  day: PropTypes.number,
+  onSelect: PropTypes.func.isRequired
+};
+
 function Week(props) {
   const { days, onSelect } = props;
 
-  return <div></div>;
+  return (
+    <tr className="date-table-days">
+      {days.map((day, idx) => {
+        return <Day key={idx} day={day} onSelect={onSelect} />;
+      })}
+    </tr>
+  );
 }
 
 Week.propTypes = {

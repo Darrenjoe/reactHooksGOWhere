@@ -18,8 +18,10 @@ import {
   fetchCityData,
   setSelectedCity,
   showDateSelector,
-  hideDateSelector
+  hideDateSelector,
+  setDepartDate
 } from "./actions";
+import { h0 } from "../common/fp";
 
 function App(props) {
   const {
@@ -80,6 +82,19 @@ function App(props) {
     // eslint-disable-next-line
   }, []);
 
+  const onSelectDate = useCallback(day => {
+    if (!day) {
+      return;
+    }
+    if (day < h0()) {
+      return;
+    }
+
+    dispatch(setDepartDate(day));
+    dispatch(hideDateSelector());
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div>
       <div className="header-wrapper">
@@ -97,7 +112,11 @@ function App(props) {
         isLoading={isLoadingCityData}
         {...citySelectorCbs}
       />
-      <DateSelector show={isDateSelectorVisible} {...dateSelectorCbs} />
+      <DateSelector
+        show={isDateSelectorVisible}
+        {...dateSelectorCbs}
+        onSelect={onSelectDate}
+      />
     </div>
   );
 }
