@@ -19,7 +19,8 @@ import {
   setSelectedCity,
   showDateSelector,
   hideDateSelector,
-  setDepartDate
+  setDepartDate,
+  toggleHighSpeed
 } from "./actions";
 import { h0 } from "../common/fp";
 
@@ -32,7 +33,8 @@ function App(props) {
     cityData,
     isLoadingCityData,
     dispatch,
-    departDate
+    departDate,
+    highSpeed
   } = props;
 
   const onBack = useCallback(() => {
@@ -82,6 +84,16 @@ function App(props) {
     // eslint-disable-next-line
   }, []);
 
+  const highSpeedCbs = useMemo(() => {
+    return bindActionCreators(
+      {
+        toggle: toggleHighSpeed
+      },
+      dispatch
+    );
+    // eslint-disable-next-line
+  }, []);
+
   const onSelectDate = useCallback(day => {
     if (!day) {
       return;
@@ -103,7 +115,7 @@ function App(props) {
       <form className="form">
         <Journey from={from} to={to} {...cbs} />
         <DepartDate time={departDate} {...departDateCbs} />
-        <HighSpeed />
+        <HighSpeed highSpeed={highSpeed} {...highSpeedCbs} />
         <Submit />
       </form>
       <CitySelector
