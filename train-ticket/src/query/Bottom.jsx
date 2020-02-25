@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { ORDER_DEPART } from "./constant";
 import classnames from "classnames";
 
+import Slider from "./Slider.jsx";
+
 import "./Bottom.css";
 
 const Filter = memo(function Filter(props) {
@@ -17,6 +19,7 @@ const Filter = memo(function Filter(props) {
 
 Filter.propTypes = {
   name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired
 };
@@ -116,6 +119,22 @@ const BottomModal = memo(function BottomModal(props) {
     }
   );
 
+  const [localDeppartTimeStart, setLocalDeppartTimeStart] = useState(() => {
+    return departTimeStart;
+  });
+
+  const [localDeppartTimeEnd, setLocalDeppartTimeEnd] = useState(() => {
+    return departTimeEnd;
+  });
+
+  const [localArriveTimeStart, setLocalArriveTimeStart] = useState(() => {
+    return arriveTimeStart;
+  });
+
+  const [localArriveTimeEnd, setLocalArriveTimeEnd] = useState(() => {
+    return arriveTimeEnd;
+  });
+
   const optionGroup = [
     {
       title: "坐席类型",
@@ -155,6 +174,20 @@ const BottomModal = memo(function BottomModal(props) {
             {optionGroup.map(group => {
               return <Option key={group.title} {...group} />;
             })}
+            <Slider
+              title="出发时间"
+              currentStartHours={localDeppartTimeStart}
+              currentEndHours={localDeppartTimeEnd}
+              onStartChanged={setLocalDeppartTimeStart}
+              onEndChanged={setLocalDeppartTimeEnd}
+            />
+            <Slider
+              title="到达时间"
+              currentStartHours={localArriveTimeStart}
+              currentEndHours={localArriveTimeEnd}
+              onStartChanged={setLocalArriveTimeStart}
+              onEndChanged={setLocalArriveTimeEnd}
+            />
           </div>
         </div>
       </div>
