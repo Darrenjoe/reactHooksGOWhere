@@ -26,8 +26,21 @@ const Slider = memo(function Slider(props) {
   const range = useRef();
   const rangewidth = useRef();
 
+  const prevCurrentStartHours = useRef(currentStartHours);
+  const prevCurrentEndHours = useRef(currentEndHours);
+
   const [start, setStart] = useState(() => (currentStartHours / 24) * 100);
   const [end, setEnd] = useState(() => (currentEndHours / 24) * 100);
+
+  if (prevCurrentStartHours.current !== currentStartHours) {
+    setStart((currentStartHours / 24) * 100);
+    prevCurrentStartHours.current = currentStartHours;
+  }
+
+  if (prevCurrentEndHours.current !== currentEndHours) {
+    setStart((currentEndHours / 24) * 100);
+    prevCurrentEndHours.current = currentEndHours;
+  }
 
   const startPercent = useMemo(() => {
     if (start > 100) {
@@ -113,6 +126,7 @@ const Slider = memo(function Slider(props) {
         onStartTouchBegin,
         false
       );
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       startHandle.current.removeEventListener(
         "touchmove",
         onStartTouchMove,
@@ -123,6 +137,7 @@ const Slider = memo(function Slider(props) {
         onEndTouchBegin,
         false
       );
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       endHandle.current.removeEventListener("touchmove", onEndTouchMove, false);
     };
   });
