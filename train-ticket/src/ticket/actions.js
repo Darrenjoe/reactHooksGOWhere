@@ -1,3 +1,5 @@
+import { h0 } from "../common/fp";
+
 export const ACTION_SET_DEPART_DATE = "SET_DEPART_DATE";
 export const ACTION_SET_ARRIVE_DATE = "SET_ARRIVE_DATE";
 export const ACTION_SET_DEPART_TIME_STR = "SET_DEPART_TIME_STR";
@@ -10,49 +12,49 @@ export const ACTION_SET_TICKETS = "SET_TICKETS";
 export const ACTION_SET_IS_SCHEDULE_VISIBLE = "SET_IS_SCHEDULE_VISIBLE";
 export const ACTION_SET_SEARCH_PARSED = "SET_SEARCH_PARSED";
 
-export function setDepartdate(departDate) {
+export function setDepartDate(departDate) {
   return {
     type: ACTION_SET_DEPART_DATE,
     payload: departDate
   };
 }
-export function setArrivedate(arriveDate) {
+export function setArriveDate(arriveDate) {
   return {
     type: ACTION_SET_ARRIVE_DATE,
     payload: arriveDate
   };
 }
-export function setDeparttimestr(departTimeStr) {
+export function setDepartTimeStr(departTimeStr) {
   return {
     type: ACTION_SET_DEPART_TIME_STR,
     payload: departTimeStr
   };
 }
-export function setArrivetimestr(arriveTimeStr) {
+export function setArriveTimeStr(arriveTimeStr) {
   return {
     type: ACTION_SET_ARRIVE_TIME_STR,
     payload: arriveTimeStr
   };
 }
-export function setDepartstation(departStation) {
+export function setDepartStation(departStation) {
   return {
     type: ACTION_SET_DEPART_STATION,
     payload: departStation
   };
 }
-export function setArrivestation(arriveStation) {
+export function setArriveStation(arriveStation) {
   return {
     type: ACTION_SET_ARRIVE_STATION,
     payload: arriveStation
   };
 }
-export function setTrainnumber(trainNumber) {
+export function setTrainNumber(trainNumber) {
   return {
     type: ACTION_SET_TRAIN_NUMBER,
     payload: trainNumber
   };
 }
-export function setDurationstr(durationStr) {
+export function setDurationStr(durationStr) {
   return {
     type: ACTION_SET_DURATION_STR,
     payload: durationStr
@@ -64,24 +66,39 @@ export function setTickets(tickets) {
     payload: tickets
   };
 }
-export function setIsschedulevisible(isScheduleVisible) {
+export function setIsScheduleVisible(isScheduleVisible) {
   return {
     type: ACTION_SET_IS_SCHEDULE_VISIBLE,
     payload: isScheduleVisible
   };
 }
 
-export function toggleIsschedulevisible(isScheduleVisible) {
+export function toggleIsScheduleVisible(isScheduleVisible) {
   return (dispatch, getState) => {
     const { isScheduleVisible } = getState();
 
-    dispatch(setIsschedulevisible(!isScheduleVisible));
+    dispatch(setIsScheduleVisible(!isScheduleVisible));
   };
 }
 
-export function setSearchparsed(searchParsed) {
+export function setSearchParsed(searchParsed) {
   return {
     type: ACTION_SET_SEARCH_PARSED,
     payload: searchParsed
+  };
+}
+
+export function nextDate() {
+  return (dispatch, getState) => {
+    const { departDate } = getState();
+
+    dispatch(setDepartDate(h0(departDate) + 86400 * 1000));
+  };
+}
+export function prevDate() {
+  return (dispatch, getState) => {
+    const { departDate } = getState();
+
+    dispatch(setDepartDate(h0(departDate) - 86400 * 1000));
   };
 }
