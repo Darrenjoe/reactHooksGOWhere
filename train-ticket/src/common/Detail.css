@@ -1,0 +1,65 @@
+.detail .content {
+  display: flex;
+  padding: 10px;
+  text-align: center;
+}
+.detail .content .left,
+.detail .content .middle,
+.detail .content .right {
+  flex: 1;
+}
+
+.detail .content .city {
+  line-height: 24px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.detail .content .time {
+  line-height: 24px;
+  color: #000;
+  font-size: 20px;
+}
+
+.detail .content .date {
+  line-height: 24px;
+  color: #000;
+  font-size: 12px;
+}
+
+.detail .content .middle .train-number,
+.detail .content .middle .train-time {
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.detail .content .train-mid .left {
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  font-size: 0;
+  background: #1ba9ba;
+  margin-bottom: 4px;
+}
+
+.detail .content .train-mid .right {
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  font-size: 0;
+  background: #1ba9ba;
+  margin-bottom: 4px;
+}
+
+.detail .content .train-mid .schedule {
+  color: #1ba9ba;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.train-item {
+  font-size: 13px;
+  color: #666;
+  position: relative;
+  top: -7px;
+}
