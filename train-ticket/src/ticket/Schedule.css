@@ -1,0 +1,23 @@
+.schedule span {
+  width: 18px;
+  line-height: 18px;
+  color: #fff;
+  border-radius: 9px;
+  background: #f30;
+  position: relative;
+  top: 7px;
+  font-size: 12px;
+}
+
+.schedule .dialog li .row {
+  margin-left: 30px;
+  border-bottom: 0.5px solid #e1e1e1;
+  color: #000;
+  display: flex;
+}
+.schedule .dialog .grey {
+  color: #888 !important;
+}
+.schedule .dialog .red {
+  color: #f30 !important;
+}
