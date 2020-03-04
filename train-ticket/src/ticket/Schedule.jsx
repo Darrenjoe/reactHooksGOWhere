@@ -142,7 +142,7 @@ function Schedule(props) {
           <span className="station">车站</span>
           <span className="deptime">到达</span>
           <span className="arrtime">发车</span>
-          <span className="stoptime">停留</span>
+          <span className="stoptime">停留时间</span>
         </div>
         <ul>
           {scheduleList.map((schedule, index) => {

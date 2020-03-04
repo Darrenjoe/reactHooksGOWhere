@@ -1,14 +1,74 @@
-.schedule span {
+.schedule .dialog {
+  background: white;
+  width: 80%;
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  transform: translate3d(0, -50%, 0);
+  border-radius: 8px;
+}
+.schedule .dialog h1 {
+  text-align: center;
+  line-height: 2;
+  font-size: 20px;
+}
+
+.schedule .dialog .head {
+  display: flex;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.schedule .dialog .head .station {
+  flex: 0 0 100px;
+}
+.schedule .dialog .head .deptime,
+.schedule .dialog .head .arrtime,
+.schedule .dialog .head .stoptime {
+  flex: 1;
+}
+ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.schedule .dialog ul li {
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 0;
+}
+.schedule .dialog ul li .icon {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  border: 1px solid #e6e6e6;
+  width: 18px;
+  line-height: 18px;
+  border-radius: 9px;
+}
+
+.schedule .dialog ul li .icon.icon-red {
   width: 18px;
   line-height: 18px;
   color: #fff;
   border-radius: 9px;
   background: #f30;
-  position: relative;
+  position: absolute;
   top: 7px;
   font-size: 12px;
 }
 
+.schedule .dialog li .row .station {
+  flex: 0 0 70px;
+  text-align: left;
+}
+.schedule .dialog li .row .deptime,
+.schedule .dialog li .row .arrtime,
+.schedule .dialog li .row .stoptime {
+  flex: 1;
+}
 .schedule .dialog li .row {
   margin-left: 30px;
   border-bottom: 0.5px solid #e1e1e1;
