@@ -22,6 +22,45 @@
 .candidate li .price {
   float: left;
   font-size: 18px;
+  color: #ff8300;
+}
+.candidate li .price i {
+  font-size: 16px;
+}
+.candidate li .btn {
+  float: right;
+  margin: 9px 0;
+  padding: 0 8px;
+  font-size: 16px;
+  border: 1px solid #ff8300;
+  color: #ff8300;
+  border-radius: 5px;
+  line-height: 24px;
+}
+.candidate li .num {
+  float: right;
+  margin-right: 15px;
+  font-size: 16px;
+}
+.candidate li .channel {
+  display: flex;
+  height: 55px;
+  padding: 0 15px;
+}
+.candidate li .channel .middle {
+  flex: 1;
+  padding: 0 15px;
+}
+.candidate li .channel .middle .name {
+  font-size: 16px;
+}
+.candidate li .channel .middle .desc {
+  font-size: 12px;
+  color: #888;
+}
+.candidate li .channel a {
+  flex: 0 0 60px;
+  padding: 0 15px;
 }
 .main {
   margin-top: 2px;
