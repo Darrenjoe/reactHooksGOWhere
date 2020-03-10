@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { connect } from "react-redux";
 import URI from "urijs";
 import dayjs from "dayjs";
+
 import Header from "../common/Header";
 import Detail from "../common/Detail";
 import Account from "./Account";
