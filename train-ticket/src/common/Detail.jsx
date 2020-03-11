@@ -20,9 +20,7 @@ function Detail(props) {
     trainNumber,
     departStation,
     arriveStation,
-    durationStr,
-    toggleIsScheduleVisible,
-    dispatch
+    durationStr
   } = props;
 
   const departDateStr = useMemo(() => format(departDate), [departDate]);
@@ -38,16 +36,7 @@ function Detail(props) {
         </div>
         <div className="middle">
           <p className="train-number">{trainNumber}</p>
-          <p className="train-mid">
-            <span className="left"></span>
-            <span
-              className="schedule"
-              onClick={() => toggleIsScheduleVisible()}
-            >
-              时刻表
-            </span>
-            <span className="right"></span>
-          </p>
+          <p className="train-mid">{props.children}</p>
           <p className="train-time">耗时{durationStr}</p>
         </div>
         <div className="right">
