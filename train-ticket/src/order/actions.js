@@ -169,7 +169,7 @@ export function createChild() {
     }
 
     if (!adultFound) {
-      alert("请至少正确添加一个成人");
+      alert("请至少正确添加一个成人!");
       return;
     }
 
