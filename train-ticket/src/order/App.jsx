@@ -22,7 +22,9 @@ import {
   setSearchParsed,
   fetchInital,
   createAdult,
-  createChild
+  createChild,
+  removePassenger,
+  updatePassenger
 } from "./actions";
 
 function App(props) {
@@ -85,7 +87,9 @@ function App(props) {
     return bindActionCreators(
       {
         createAdult,
-        createChild
+        createChild,
+        removePassenger,
+        updatePassenger
       },
       dispatch
     );

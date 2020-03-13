@@ -181,11 +181,38 @@ export function createChild() {
           name: "",
           gender: "none",
           birthday: "",
-          followAdult: "",
-          ticketType: "adult",
+          followAdult: adultFound,
+          ticketType: "child",
           seat: "Z"
         }
       ])
     );
+  };
+}
+
+export function removePassenger(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+
+    const newPassengers = passengers.filter(passenger => {
+      return passenger.id !== id && passenger.followAdult !== id;
+    });
+
+    dispatch(setPassengers(newPassengers));
+  };
+}
+
+export function updatePassenger(id, data) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+
+    for (let i = 0; i < passengers.length; i++) {
+      if (passengers[i].id === id) {
+        const newPassengers = [...passengers];
+        newPassengers[i] = Object.assign({}, passengers[i], data);
+        dispatch(setPassengers(newPassengers));
+        break;
+      }
+    }
   };
 }
