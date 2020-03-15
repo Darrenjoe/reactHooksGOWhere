@@ -216,3 +216,44 @@ export function updatePassenger(id, data) {
     }
   };
 }
+
+export function showMenu(menu) {
+  return dispatch => {
+    dispatch(setMenu(menu));
+    dispatch(setIsMenuVisible(true));
+  };
+}
+
+export function showGender(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+    const passenger = passengers.find(passenger => passenger.id === id);
+    if (!passenger) {
+      return;
+    }
+    dispatch(
+      showMenu({
+        onPress(gender) {
+          dispatch(updatePassenger(id, { gender }));
+          dispatch(hideMenu());
+        },
+        options: [
+          {
+            title: "男",
+            value: "male",
+            active: "male" === passenger.gender
+          },
+          {
+            title: "女",
+            value: "female",
+            active: "female" === passenger.gender
+          }
+        ]
+      })
+    );
+  };
+}
+
+export function hideMenu() {
+  return setIsMenuVisible(true);
+}

@@ -77,7 +77,7 @@ const Passenger = memo(function Passenger(props) {
             <input
               type="text"
               className="input followAdult"
-              placeholder="请 选择"
+              placeholder="请选择"
               value={followAdult}
               readOnly
             />

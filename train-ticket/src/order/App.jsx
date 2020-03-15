@@ -9,6 +9,7 @@ import Detail from "../common/Detail";
 import Account from "./Account";
 import Choose from "./Choose";
 import Passengers from "./Passengers";
+import Menu from "./Menu";
 import Ticket from "./Ticket";
 
 import "./App.css";
@@ -24,7 +25,8 @@ import {
   createAdult,
   createChild,
   removePassenger,
-  updatePassenger
+  updatePassenger,
+  hideMenu
 } from "./actions";
 
 function App(props) {
@@ -96,6 +98,16 @@ function App(props) {
     // eslint-disable-next-line
   }, []);
 
+  const menuCbs = useMemo(() => {
+    return bindActionCreators(
+      {
+        hideMenu
+      },
+      dispatch
+    );
+    // eslint-disable-next-line
+  }, []);
+
   if (!searchParsed) {
     return null;
   }
@@ -124,6 +136,7 @@ function App(props) {
       </div>
       <Ticket price={price} type={seatType} />
       <Passengers passengers={passengers} {...passengersCbs} />
+      <Menu show={isMenuVisible} {...menu} {...menuCbs} />
     </div>
   );
 }
