@@ -19,7 +19,7 @@ const MenuItem = memo(function MenuItem(props) {
 });
 
 MenuItem.propTypes = {
-  onPress: PropTypes.func.isRequired,
+  onPress: PropTypes.func,
   title: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   active: PropTypes.bool.isRequired
@@ -52,8 +52,8 @@ const Menu = memo(function Menu(props) {
 
 Menu.propTypes = {
   show: PropTypes.bool.isRequired,
-  options: PropTypes.array.isRequired,
-  onPress: PropTypes.func.isRequired,
+  options: PropTypes.array,
+  onPress: PropTypes.func,
   hideMenu: PropTypes.func.isRequired
 };
 

@@ -224,7 +224,7 @@ export function showMenu(menu) {
   };
 }
 
-export function showGender(id) {
+export function showGenderMenu(id) {
   return (dispatch, getState) => {
     const { passengers } = getState();
     const passenger = passengers.find(passenger => passenger.id === id);
