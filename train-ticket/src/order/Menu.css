@@ -6,6 +6,7 @@
   bottom: 0;
   transition: all 0.5s;
   transform: translateY(100%);
+  z-index: 990;
 }
 
 .menu.show {
@@ -19,8 +20,8 @@
   left: 0;
   right: 0;
   background: #000;
-  opacity: 0;
-  z-index: 999;
+  opacity: 0.3;
+  z-index: 900;
 }
 
 .menu-title {

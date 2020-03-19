@@ -10,7 +10,7 @@ const MenuItem = memo(function MenuItem(props) {
     <li
       className={classnames({ active })}
       onClick={() => {
-        onPress();
+        onPress(value);
       }}
     >
       {title}

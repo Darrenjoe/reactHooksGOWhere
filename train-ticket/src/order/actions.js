@@ -255,5 +255,5 @@ export function showGenderMenu(id) {
 }
 
 export function hideMenu() {
-  return setIsMenuVisible(true);
+  return setIsMenuVisible(false);
 }
