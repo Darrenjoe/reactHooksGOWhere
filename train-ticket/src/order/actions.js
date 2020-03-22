@@ -244,7 +244,7 @@ export function showGenderMenu(id) {
             active: "male" === passenger.gender
           },
           {
-            title: "女 ",
+            title: "女",
             value: "female",
             active: "female" === passenger.gender
           }
