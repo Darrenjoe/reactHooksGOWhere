@@ -27,7 +27,8 @@ import {
   removePassenger,
   updatePassenger,
   hideMenu,
-  showGenderMenu
+  showGenderMenu,
+  showFollowAdultMenu
 } from "./actions";
 
 function App(props) {
@@ -93,7 +94,8 @@ function App(props) {
         createChild,
         removePassenger,
         updatePassenger,
-        showGenderMenu
+        showGenderMenu,
+        showFollowAdultMenu
       },
       dispatch
     );

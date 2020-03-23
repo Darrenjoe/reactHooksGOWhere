@@ -202,7 +202,7 @@ export function removePassenger(id) {
   };
 }
 
-export function updatePassenger(id, data) {
+export function updatePassenger(id, data, keysToBeRemoved = []) {
   return (dispatch, getState) => {
     const { passengers } = getState();
 
@@ -210,6 +210,11 @@ export function updatePassenger(id, data) {
       if (passengers[i].id === id) {
         const newPassengers = [...passengers];
         newPassengers[i] = Object.assign({}, passengers[i], data);
+
+        for (let key of keysToBeRemoved) {
+          delete newPassengers[i][key];
+        }
+
         dispatch(setPassengers(newPassengers));
         break;
       }
@@ -247,6 +252,77 @@ export function showGenderMenu(id) {
             title: "女",
             value: "female",
             active: "female" === passenger.gender
+          }
+        ]
+      })
+    );
+  };
+}
+
+export function showFollowAdultMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+    const passenger = passengers.find(passenger => passenger.id === id);
+    if (!passenger) {
+      return;
+    }
+
+    dispatch(
+      showMenu({
+        onPress(followAdult) {
+          dispatch(updatePassenger(id, { followAdult }));
+          dispatch(hideMenu());
+        },
+        options: passengers
+          .filter(passenger => passenger.ticketType === "adult")
+          .map(adult => {
+            return {
+              title: adult.name,
+              value: adult.id,
+              active: adult.id === passenger.followAdult
+            };
+          })
+      })
+    );
+  };
+}
+
+export function showTicketTypeMenu(id) {
+  return (dispatch, getState) => {
+    const { passengers } = getState();
+    const passenger = passengers.find(passenger => passenger.id === id);
+    if (!passenger) {
+      return;
+    }
+
+    dispatch(
+      showMenu({
+        onPress(ticketType) {
+          if ("adult" === ticketType) {
+            dispatch(
+              updatePassenger(
+                id,
+                {
+                  ticketType,
+                  licenceNo: ""
+                },
+                ["gender", "followAdult", "birthday"]
+              )
+            );
+          } else {
+            // passenger.find(passenger => passenger.id === id &&)
+          }
+        },
+        options: [
+          {
+            title: "成人票",
+            value: "adult",
+            active: "adult" === passenger.ticketType
+          },
+          {
+            title: "儿童票",
+            value: "",
+            active: "" === passenger.ticketType
           }
         ]
       })
