@@ -310,8 +310,28 @@ export function showTicketTypeMenu(id) {
               )
             );
           } else {
-            // passenger.find(passenger => passenger.id === id &&)
+            const adult = passengers.find(
+              passenger =>
+                passenger.id !== id && passenger.ticketType === "adult"
+            );
+            if (adult) {
+              dispatch(
+                updatePassenger(
+                  id,
+                  {
+                    ticketType,
+                    gender: "",
+                    followAdult: adult.id,
+                    birthday: ""
+                  },
+                  ["licenceNo"]
+                )
+              );
+            } else {
+              alert("没有其他成人乘客");
+            }
           }
+          dispatch(hideMenu());
         },
         options: [
           {
