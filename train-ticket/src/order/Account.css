@@ -1,0 +1,32 @@
+.account .price::after {
+  top: 30%;
+  right: -15px;
+  position: absolute;
+  content: "";
+  width: 11px;
+  height: 6px;
+  margin-top: -3px;
+  background-size: 100%;
+}
+
+.account .price.expanded::after {
+  transform: rotateZ(180deg);
+}
+
+.account .money {
+  line-height: 28px;
+  margin-top: 0;
+}
+
+.account .detail li span:nth-child(n) {
+  width: 50px;
+  text-align: right;
+}
+.account .detail li span:nth-child(3n + 1) {
+  flex: 1;
+  text-align: left;
+}
+.account .detail li span:nth-child(3n + 2) {
+  width: 50px;
+  text-align: right;
+}
