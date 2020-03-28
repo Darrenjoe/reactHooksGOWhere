@@ -1,3 +1,31 @@
+.account {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.account .layer {
+  background: rgba(197, 153, 153, 0.6);
+  position: fixed;
+  top: 0;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+}
+.account .button {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  background-color: #ff8300;
+  color: white;
+  padding: 0 10px;
+  line-height: 2;
+}
+.account .price {
+  height: 60px;
+  padding-left: 10px;
+  background: white;
+}
 .account .price::after {
   top: 30%;
   right: -15px;
@@ -17,7 +45,22 @@
   line-height: 28px;
   margin-top: 0;
 }
-
+.account .detail {
+  position: absolute;
+  bottom: 60px;
+  background: white;
+  height: 60px;
+  border-bottom: 1px solid #e6e6e6;
+  width: 100%;
+}
+.account .detail .title {
+  line-height: 30px;
+  padding-left: 10px;
+}
+.account .detail ul li {
+  display: flex;
+  padding: 0 10px;
+}
 .account .detail li span:nth-child(n) {
   width: 50px;
   text-align: right;
